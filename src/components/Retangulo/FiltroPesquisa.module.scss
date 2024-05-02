@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.filtro {
+    background-color: #E3EBF3;
+    // margin: 129px 162px; 
+    margin-top: 129px ;
+    margin-left: 162px;
+    margin-right: 162px;
+    padding: 2%;
+    border-bottom: 1px solid #ccc;
+}
+
+.filtro label {
+    margin-left: 312px;
+    margin-top: 152px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.filtro select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 300px;
+
+}

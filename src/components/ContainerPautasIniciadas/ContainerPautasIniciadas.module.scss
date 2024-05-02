@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: 'Roboto Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.container {
+    height: 230px;
+    background-color: #FFFFFF;
+    margin: 30px 162px;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-color: #5CB1FF;
+
+    // box-sizing: border-box;
+    // position: absolute;
+    // width: 1110px;
+    // height: 206px;
+    // left: 162px;
+    // top: 213px;
+    // background: #FFFFFF;
+    // border: 1px solid #5CB1FF; 
+}
+
+.area_categoria {
+    margin-left: 0px;
+    padding-top: 0px;
+}
+
+.label_categoria {
+    position: absolute;
+    width: 400px;
+    height: 18px;
+    left: 224px;
+    top: 270px;
+    line-height: 18px;
+    color: #000000;
+}
+
+.botao {
+    background-color: #F99500;
+    color: #FFFFFF;
+    border: none;
+    width: 212px;
+    height: 43px;
+    margin-left: 740px;
+    font-family:  Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    border: 1px solid #5CB1FF;
+    box-sizing: border-box;
+}
+
+.label_pauta {
+    position: absolute;
+    left: 224px;
+    //margin-left: 62px;
+    padding-top: 25px;
+}
+
+.sessao {
+    box-sizing: border-box;
+    position: absolute;
+    width: 920px;
+    height: 72px;
+    left: 222px;
+    top: 380px;
+    background: linear-gradient(90deg, #FFFFFF 0%, #C8BEBE 100%);
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.abertura_sessao {
+    position: absolute;
+    width: 600px;
+    height: 18px;
+    padding-left: 1%;
+    padding-top: 1%;
+    line-height: 18px;
+    color: #000000;
+}
+
+.abertura_sessao_titulo {
+    margin-left: 0px;
+}
+
+.abertura_sessao_valor {
+    margin-left: 220px;
+}
+
+.fechamento_sessao {
+    position: absolute;
+    width: 600px;
+    height: 18px;
+    padding-left: 1%;
+    padding-top: 4%;
+    line-height: 18px;
+    color: #000000;
+}    
+
+.fechamento_sessao_titulo {
+    margin-left: 0px;
+}
+
+.fechamento_sessao_valor {
+    margin-left: 198px;
+}
+
+.label_resultado {
+    position: absolute;
+    height: 18px;
+    left: 224px; 
+    top: 480px;       
+}
+
