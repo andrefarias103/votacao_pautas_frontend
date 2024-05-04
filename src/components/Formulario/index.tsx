@@ -1,7 +1,7 @@
 import React from "react";
 import ContainerPautasIniciadas from "../ContainerPautasIniciadas";
+import FiltroPesquisa from "../FiltroPesquisa";
 import Menu from "../Menu";
-import FiltroPesquisa from "../Retangulo";
 
 class Formulario extends React.Component {
     render()  {
