@@ -1,0 +1,93 @@
+
+.container {
+    display: flex;
+    height: 220px;
+    width: 100%;
+    padding-top: 1%;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-color: #5CB1FF;
+    border-radius: 8px;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.area_categoria {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 100%;
+    padding: 1%;
+    line-height: 25px;
+}
+
+.label_categoria {
+    color: #636262;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.label_pauta {
+    color: #9c3c01;
+    font-weight: bold;
+}
+
+.sessao {    
+    height: 65px;
+    background: linear-gradient(90deg, #FFFFFF 0%, #C8BEBE 100%);
+    border: 1px solid #000000;
+    width: 100%;
+    //justify-items: spa;
+    align-content: center;
+    margin-left: 1%;
+    margin-right: 1%;   
+    //flex-direction: column;
+    //align-items: center;
+    
+}
+
+.abertura_sessao {
+    display: flex;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 1%;
+    gap: 100px;
+    
+}
+
+.abertura_sessao_valor {
+    display: flex;
+    //justify-content: space-between;
+    align-content: center;
+    padding-left: 50%;
+}
+
+.fechamento_sessao {
+    display: flex;
+    line-height: 18px;
+    color: #000000;
+    padding-left: 1%;
+    gap: 75px;
+}    
+
+.fechamento_sessao_valor {
+    padding-left: 33%;
+}
+
+.label_resultado {
+    display: flex;
+    //line-height: 2px;
+    height: 40px;
+    color: #9c3c01;
+    font-weight: bold;           
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 1%;    
+    gap: 10px;
+}
+
+// .label_valor {
+//     padding-left: 3%;  
+// }

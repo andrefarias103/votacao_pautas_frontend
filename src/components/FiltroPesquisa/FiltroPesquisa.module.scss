@@ -1,29 +1,32 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
 
 .filtro {
-    background-color: #E3EBF3;
-    // margin: 129px 162px; 
-    margin-top: 129px ;
-    margin-left: 162px;
-    margin-right: 162px;
-    padding: 2%;
+    display: flex;    
+    height: 90px;
+    width: 100%;
     border-bottom: 1px solid #ccc;
+    align-content: center;   
+    background-color: #E3EBF3;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .filtro label {
-    margin-left: 312px;
-    margin-top: 152px;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
+    font-family: 'Roboto Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;     
+    align-self: center;
+
 }
 
 .filtro select {
-    padding: 5px;
-    border-radius: 4px;
+    width: 600px;    
     border: 1px solid #ccc;
-    width: 300px;
+    font-family: 'Roboto Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;       
+    align-self: center;
 
 }

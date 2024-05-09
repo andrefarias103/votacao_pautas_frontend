@@ -1,5 +1,5 @@
 .botao {
-  align-self: center;
+  //align-self: flex-end;
   font-family:  Georgia, 'Times New Roman', Times, serif;
   font-size: 16px;
   background-color: #F99500;
@@ -9,10 +9,9 @@
   cursor: pointer;
   width: 212px;
   height: 35px;
-  border: none;
-  margin-left: 740px;
   border: 1px solid #5CB1FF;
   box-sizing: border-box; 
+  justify-content: space-between;
   
   &:active {
     background-color: #e5b55c;
