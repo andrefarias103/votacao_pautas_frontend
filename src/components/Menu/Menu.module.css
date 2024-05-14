@@ -1,0 +1,33 @@
+.menu {
+  background-color: #adc7ef; /* Cor de fundo da barra de menu */
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 99px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.menu ul {
+  margin-bottom: 16px;
+  background-color: #adc7ef;
+  list-style-type: none;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.menu li {
+  display: inline;
+}
+
+.menu li a:hover {
+  background-color: #b4e4f4;
+}

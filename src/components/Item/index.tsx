@@ -1,5 +1,5 @@
-import Botao from "../Botao";
-import style from "./Item.module.scss";
+import Botao from "../botao";
+import style from "./item.module.css";
 
 function Item ( props : { children?: React.ReactNode,  titulo: string, tituloPauta: string, aberturaSessao: string, fechamentoSessao: string, quantidadeVotos: string} ) {
     const { titulo, tituloPauta, aberturaSessao, fechamentoSessao, quantidadeVotos } = props;

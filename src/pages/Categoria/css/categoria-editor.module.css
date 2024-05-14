@@ -1,0 +1,62 @@
+.AppStyle {
+    height: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 16px;
+    gap: 26px;
+}
+.container {
+    display: flex;    
+    height: 306px;
+    padding: 28px;
+    border-bottom: 1px solid #ccc;
+    background-color: #EDF5F8;
+    flex-direction: column;
+    line-height: 25px;
+    gap: 15px;
+}
+
+.areaCampos {
+    display: flex;
+    width: 100%;
+    gap: 3px;
+}
+
+.label {
+    font-family: 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;  
+    width: 86px;
+}
+
+.textBoxNome {
+    width: 100%;
+    font-family: 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+}
+
+.textBoxDescricao {
+     height: 200px;
+     width: 100%;
+     font-family: 'sans-serif';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 16px; 
+}
+
+.areabotao {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import stylePesquisa from "../components/FiltroPesquisa/FiltroPesquisa.module.scss";
-import Item from "../components/Item";
+import stylePesquisa from "../components/filtroPesquisa/filtro-pesquisa.module.scss";
+import Item from "../components/item";
 import { IDadosCategoria, useCategorias } from "../hooks/useCategorias";
 import { IDadosPauta, usePautas } from "../hooks/usePautas";
-import style from "./Home.module.scss";
+import style from "./home.module.css";
 
 
 function Home() {
@@ -43,10 +43,10 @@ function Home() {
                 <Item
                   titulo={item.categoria.nome}
                   tituloPauta={item.titulo}
-                  aberturaSessao={item.Sessao.dataHoraInicio}
+                  aberturaSessao={ item.Sessao.dataHoraInicio   }
                   fechamentoSessao={item.Sessao.dataHoraFim}      
                   quantidadeVotos={item.quantidadeVotos}           
-                ></Item>
+                ></Item>                
               ))}
             </ul>
         </div>

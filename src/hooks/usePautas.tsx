@@ -28,7 +28,7 @@ export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) 
             categoria = "";
         }
          
-        fetch(`http://localhost:3010/pauta/${categoria}`)
+        fetch(`http://localhost:3010/pautas/liberadas/${categoria}`)
              .then((response) => response.json())
              .then((data) => setPautas(data))
              .then(() => setLoading(false))
