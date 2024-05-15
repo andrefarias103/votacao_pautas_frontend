@@ -55,6 +55,30 @@
     justify-content: center;
 }
 
+.link {
+    font-family:  Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    background-color: #F99500;
+    display: inline-block;
+    line-height: 32px;
+    opacity: 0.9;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    text-size-adjust: 100%;
+    width: 212px;
+    height: 35px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px #0000009F;
+
+    &:active {
+      background-color: #F99500;
+      box-shadow: 2px 2px 4px #0000009F inset;
+    }
+  }
 
 
 

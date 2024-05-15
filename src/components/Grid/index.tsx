@@ -1,21 +1,31 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { useCategoriasPorNome } from "../../hooks/useCategorias";
-import Botao from "../botao";
-import style from "./grid.module.css";
+import { excluirCategoria, useCategoriasPorNome } from "../../hooks/useCategorias";
 
-function Grid() {
+interface GridProps {
+    nome: string | undefined;
+  }
 
+const Grid: React.FC<GridProps> = ({ nome }) => {
+
+    console.log('nome: ', nome);
     const navigate = useNavigate();
 
-    const [categoriaFiltro, setCategoriaFiltro] = useState();
-    const listaCategorias = useCategoriasPorNome({ nome: categoriaFiltro });
+    const listaCategorias = useCategoriasPorNome({ nome });
     
-    // const [totalRows, setTotalRows] = useState(0);
+    //const [totalRows, setTotalRows] = useState(0);
     //const [loading, setLoading] = useState(false);
+
+    const clickEditar = (id: number) => {
+      navigate(`/categorias/editar/index/${id}`); 
+  }
+
+  async function clickExcluir(id: number) {
+      if (id) {
+        excluirCategoria({id});     
+      }
+      alert('excluir ' + id);
+  }    
 
     const customStyles = {
         headRow: {
@@ -72,8 +82,7 @@ function Grid() {
                 <button onClick={() => clickEditar(row.id)} className="btn-editar">Editar</button>
                 <button onClick={() => clickExcluir(row.id)} className="btn-excluir m-left">Excluir</button>
             </>,        
-            backgroundColor: "rgba(237, 245, 248, 1)",    
-            // width: "100%",
+            backgroundColor: "rgba(237, 245, 248, 1)",   
             heigth: "10px",
             right: true
         }
@@ -86,45 +95,7 @@ function Grid() {
         selectAllRowsItemText: 'Todos',
     }
 
-    function clickNova() {
-        alert('clicou no botao Nova');
-        return navigate("/categorias/index");
-    }
 
-    const clickEditar = (id: number) => {
-        return navigate("/categorias/nova/index");
-    }
-
-    // function clickEditar(id: number){
-    //     //alert('editar '+ id);
-    //     return navigate("/");
-    // }
-
-    function clickExcluir(id: number){
-        alert('excluir ' + id);
-    }
-
-    const handleCategoriaChange = (event: { target: { value: any } }) => {
-        setCategoriaFiltro(event.target.value);
-      };        
-
-    
-    // async function ListarDadosAPI(page: number) {
-    //     setLoading(true);
-    //     setData(dados);
-
-    //     const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=10&delay=2`);
-
-    //     // const timeout = setTimeout(() => {
-    //     //     setData(response.data.data)
-    //     //     setTotalRows(response.data.totalRows);
-    //     //     setLoading(false);            
-    //     // }, 5000);
-
-    //     setData(response.data.data)
-    //     setTotalRows(response.data.totalRows);
-    //     setLoading(false);
-    // }
 
     // async function handlePerRowsChange(newQtdPage: number, page: number) {
     //     setLoading(true);
@@ -137,23 +108,11 @@ function Grid() {
         
     // }
 
+    // useEffect(() => {
+    //     handleCategoriaChange({ target: { value: '' } })
+    // }, [] );
 
-    useEffect(() => {
-        handleCategoriaChange({ target: { value: '' } })
-    }, [] );
-
-	return (
-        <div>
-            <div className={style.pesquisa}>
-                <label>Categoria:</label>
-                <input type="text" 
-                    className={style.textBox} 
-                    onChange={handleCategoriaChange} 
-                    value={categoriaFiltro}>                    
-                </input>
-                {/* <Botao type="button" onClick={clickNova()}>Nova Categoria</Botao> */}
-                <Botao type="button">Nova Categoria</Botao>
-            </div>        
+	return (     
             <div>
                 <DataTable
                     columns={columns}
@@ -171,7 +130,6 @@ function Grid() {
                     customStyles={customStyles}
                 />            
             </div>
-        </div>
 	);
 }
 
