@@ -29,8 +29,7 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
 
                fetch(`http://localhost:3010/categorias${complemento_path}`)
                    .then((response) => response.json())
-                   .then((data) => setCategorias(data));
-               
+                   .then((data) => setCategorias(data));               
         }, [nome]);
     
         return listaCategorias;    

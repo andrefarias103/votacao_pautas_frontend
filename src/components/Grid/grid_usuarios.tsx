@@ -1,30 +1,24 @@
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { excluirCategoria, useCategoriasPorNome } from "../../hooks/useCategorias";
+import { useUsuariosPorNome } from "../../hooks/useUsuarios";
 
 interface GridProps {
-  nome: string | undefined;
-  rotaEditar: string | undefined;
-}
+    nome: string | undefined;
+  }
 
-const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
+const GridUsuarios: React.FC<GridProps> = ({ nome }) => {
 
     const navigate = useNavigate();
 
-    const listaCategorias = useCategoriasPorNome({ nome });
-    
-    //const [totalRows, setTotalRows] = useState(0);
-    //const [loading, setLoading] = useState(false);
+    const listaUsuarios = useUsuariosPorNome({ nome });
 
     const clickEditar = (id: number) => {
-      navigate(`${rotaEditar}/${id}`); 
-  }
-
-  async function clickExcluir(id: number) {
-      if (id) {
-        excluirCategoria({id});     
-      }
-  }    
+        navigate(`/usuarios/editar/index/${id}`); 
+    }   
+    
+    async function clickExcluir(id: number) {
+        //
+    }       
 
     const customStyles = {
         headRow: {
@@ -53,14 +47,14 @@ const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
             name: 'Id',
             selector: (row: { id: string; }) => row.id,
             sortable: true,
-            width: "4rem",
+            width: "0rem",
             omit: true,
         },
         {
             name: 'Nome',
             selector: (row: { nome: string; }) => row.nome,
             sortable: true,
-            width: "20rem",
+            width: "17rem",
             headCells: {
                 style: {
                   fontSize: '20px',
@@ -71,11 +65,47 @@ const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
               },
         },
         {
-            name: 'Descrição',
-            selector: (row: { descricao: string; }) => row.descricao,
+            name: 'Login',
+            selector: (row: { login: string; }) => row.login,
             sortable: true,
-            width: "30rem"
+            width: "17rem",
+            headCells: {
+                style: {
+                  fontSize: '20px',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  paddingLeft: '0 8px'
+                },
+              },
         },
+        {
+            name: 'Email',
+            selector: (row: { email: string; }) => row.email,
+            sortable: true,
+            width: "17rem",
+            headCells: {
+                style: {
+                  fontSize: '20px',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  paddingLeft: '0 8px'
+                },
+              },
+        },        
+        {
+            name: 'Tipo',
+            selector: (row: { tipo: string; }) => row.tipo,
+            sortable: true,
+            width: "17rem",
+            headCells: {
+                style: {
+                  fontSize: '20px',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  paddingLeft: '0 8px'
+                },
+              },
+        },        
         {
             cell: (row: { id: any; }) => <>
                 <button onClick={() => clickEditar(row.id)} className="btn-editar">Editar</button>
@@ -92,44 +122,22 @@ const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
         rangeSeparatorText: "de",
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
-    }
-
-
-
-    // async function handlePerRowsChange(newQtdPage: number, page: number) {
-    //     setLoading(true);
-    //     setData(dados);
-
-    //     const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${newQtdPage}&delay=5`);
-
-    //     setData(response.data.data);
-    //     setLoading(false);
-        
-    // }
-
-    // useEffect(() => {
-    //     handleCategoriaChange({ target: { value: '' } })
-    // }, [] );
+    }    
 
 	return (     
             <div>
                 <DataTable
                     columns={columns}
-                    data={listaCategorias}
+                    data={listaUsuarios}                
                     pagination={true}
                     paginationComponentOptions={paginationOptions}
                     noDataComponent={"Nenhum registro encontrado"}
-                    // onChangeRowsPerPage={handlePerRowsChange}
-                    // onChangePage={handlePageChange}
-                    // paginationTotalRows={totalRows}
                     paginationServer={true}
                     fixedHeader={true}
-                    // progressPending={loading}
-                    //conditionalRowStyles={conditionalRowStyles}
                     customStyles={customStyles}
                 />            
             </div>
 	);
 }
 
-export default GridComponent;
+export default GridUsuarios;

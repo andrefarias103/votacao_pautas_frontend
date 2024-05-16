@@ -1,12 +1,13 @@
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Botao from "../../components/botao";
 import Menu from "../../components/menu";
 import { createCategoria } from "../../hooks/useCategorias";
 import style from "./css/categoria-editor.module.css";
-import styleCad from "./css/categoria-incluir.module.css";
 
 function CategoriaIncluir()  {
+
+    const navigate = useNavigate();
 
     const [nome, setNome] = useState<string | undefined>();
     const [descricao, setDescricao] = useState<string |undefined>();
@@ -22,6 +23,7 @@ function CategoriaIncluir()  {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
         createCategoria({nome, descricao});
+        navigate(`/categorias/index`); 
       };      
 
     return (
@@ -41,7 +43,7 @@ function CategoriaIncluir()  {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/categorias/index" className={styleCad.link}>Voltar</Link>
+                        <Link to="/categorias/index" className={style.link}>Voltar</Link>
                     </div>                           
                 </div>
             </form>
