@@ -1,6 +1,7 @@
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { useUsuariosPorNome } from "../../hooks/useUsuarios";
+import { toast } from "react-toastify";
+import { excluirUsuario, useUsuariosPorNome } from "../../hooks/useUsuarios";
 
 interface GridProps {
     nome: string | undefined;
@@ -17,7 +18,10 @@ const GridUsuarios: React.FC<GridProps> = ({ nome }) => {
     }   
     
     async function clickExcluir(id: number) {
-        //
+      if (id) {
+        excluirUsuario({id});    
+        toast.success("Usuário excluído com sucesso");
+      }
     }       
 
     const customStyles = {
@@ -97,7 +101,7 @@ const GridUsuarios: React.FC<GridProps> = ({ nome }) => {
             selector: (row: { tipo: string; }) => row.tipo,
             sortable: true,
             width: "17rem",
-            headCells: {
+            headCells: {              
                 style: {
                   fontSize: '20px',
                   fontWeight: '500',
@@ -135,7 +139,7 @@ const GridUsuarios: React.FC<GridProps> = ({ nome }) => {
                     paginationServer={true}
                     fixedHeader={true}
                     customStyles={customStyles}
-                />            
+                />        
             </div>
 	);
 }

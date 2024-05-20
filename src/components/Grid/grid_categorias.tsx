@@ -4,10 +4,9 @@ import { excluirCategoria, useCategoriasPorNome } from "../../hooks/useCategoria
 
 interface GridProps {
   nome: string | undefined;
-  rotaEditar: string | undefined;
 }
 
-const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
+const GridCategoria: React.FC<GridProps> = ({ nome }) => {
 
     const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
     //const [loading, setLoading] = useState(false);
 
     const clickEditar = (id: number) => {
-      navigate(`${rotaEditar}/${id}`); 
+      navigate(`/categorias/editar/index/${id}`); 
   }
 
   async function clickExcluir(id: number) {
@@ -132,4 +131,4 @@ const GridComponent: React.FC<GridProps> = ({ nome, rotaEditar }) => {
 	);
 }
 
-export default GridComponent;
+export default GridCategoria;

@@ -14,7 +14,7 @@ export const AppRoutes: React.FC = () => {
       <Routes>        
         <Route element = <Home></Home>  path="/"  />
         <Route element = <Usuario></Usuario>  path="/usuarios/index" />
-        <Route element = <UsuarioIncluir></UsuarioIncluir>  path="/usuarios/adicionar/index/:id" />
+        <Route element = <UsuarioIncluir></UsuarioIncluir>  path="/usuarios/adicionar/index/:idUserAdmin" />
         <Route element = <UsuarioEditor></UsuarioEditor>  path="/usuarios/editar/index/:id" />        
         <Route element = <App></App>  path="/categorias/index" />
         <Route element = <CategoriaIncluir></CategoriaIncluir>  path="/categorias/adicionar/index" />

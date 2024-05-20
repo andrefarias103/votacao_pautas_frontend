@@ -1,4 +1,6 @@
 import ReactDOM from 'react-dom/client';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './global.css';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -10,6 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <AppRoutes />
+    <ToastContainer />    
   </BrowserRouter>
 );
 
