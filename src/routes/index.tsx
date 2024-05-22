@@ -3,6 +3,9 @@ import { App } from "../App";
 import Home from "../pages/Home";
 import CategoriaEditor from "../pages/categoria/categoria-editor";
 import CategoriaIncluir from "../pages/categoria/categoria-incluir";
+import Pauta from "../pages/pauta";
+import PautaEditor from "../pages/pauta/pauta-editor";
+import PautaIncluir from "../pages/pauta/pauta-incluir";
 import Usuario from "../pages/usuario";
 import UsuarioEditor from "../pages/usuario/usuario-editor";
 import UsuarioIncluir from "../pages/usuario/usuario-incluir";
@@ -19,6 +22,9 @@ export const AppRoutes: React.FC = () => {
         <Route element = <App></App>  path="/categorias/index" />
         <Route element = <CategoriaIncluir></CategoriaIncluir>  path="/categorias/adicionar/index" />
         <Route element = <CategoriaEditor></CategoriaEditor>  path="/categorias/editar/index/:id" />
+        <Route element = <Pauta></Pauta>  path="/pautas/index" />
+        <Route element = <PautaIncluir></PautaIncluir>  path="/pautas/adicionar/index/:idUserAdmin" />
+        <Route element = <PautaEditor></PautaEditor>  path="/pautas/editar/index/:id" />          
       </Routes>
   )
 }

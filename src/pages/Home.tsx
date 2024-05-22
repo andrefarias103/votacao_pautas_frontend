@@ -2,7 +2,7 @@ import { useState } from "react";
 import stylePesquisa from "../components/filtroPesquisa/filtro-pesquisa.module.scss";
 import Item from "../components/item";
 import { IDadosCategoria, useCategorias } from "../hooks/useCategorias";
-import { IDadosPauta, usePautas } from "../hooks/usePautas";
+import { IDadosPautaPorCategoria, usePautas } from "../hooks/usePautas";
 import style from "./home.module.css";
 
 
@@ -39,7 +39,7 @@ function Home() {
       {loadingPautas ? <p></p> : (
           <div>
             <ul>
-              {listaPautas.map((item: IDadosPauta) => (
+              {listaPautas.map((item: IDadosPautaPorCategoria) => (
                 <Item
                   titulo={item.categoria.nome}
                   tituloPauta={item.titulo}

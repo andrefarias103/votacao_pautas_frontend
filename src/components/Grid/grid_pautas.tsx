@@ -1,29 +1,28 @@
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { excluirCategoria, useCategoriasPorNome } from "../../hooks/useCategorias";
+import { toast } from "react-toastify";
+import { excluirPauta, usePautasPorNome } from "../../hooks/usePautas";
 
 interface GridProps {
-  nome: string | undefined;
-}
+    nome: string | undefined;
+  }
 
-const GridCategoria: React.FC<GridProps> = ({ nome }) => {
+const GridPautas: React.FC<GridProps> = ({ nome }) => {
 
     const navigate = useNavigate();
 
-    const listaCategorias = useCategoriasPorNome({ nome });
-    
-    //const [totalRows, setTotalRows] = useState(0);
-    //const [loading, setLoading] = useState(false);
+    const listaPautas = usePautasPorNome({ nome });
 
     const clickEditar = (id: number) => {
-      navigate(`/categorias/editar/index/${id}`); 
-  }
-
-  async function clickExcluir(id: number) {
+        navigate(`/pautas/editar/index/${id}`); 
+    }   
+    
+    async function clickExcluir(id: number) {
       if (id) {
-        excluirCategoria({id});     
+        excluirPauta({id});    
+        toast.success("Pauta excluída com sucesso");
       }
-  }    
+    }       
 
     const customStyles = {
         headRow: {
@@ -50,16 +49,16 @@ const GridCategoria: React.FC<GridProps> = ({ nome }) => {
     const columns = [
         {
             name: 'Id',
-            selector: (row: { id: number; }) => row.id,
+            selector: (row: { id: string; }) => row.id,
             sortable: true,
-            width: "4rem",
+            width: "0rem",
             omit: true,
         },
         {
-            name: 'Nome',
-            selector: (row: { nome: string; }) => row.nome,
+            name: 'Título',
+            selector: (row: { titulo: string; }) => row.titulo,
             sortable: true,
-            width: "20rem",
+            width: "17rem",
             headCells: {
                 style: {
                   fontSize: '20px',
@@ -70,11 +69,19 @@ const GridCategoria: React.FC<GridProps> = ({ nome }) => {
               },
         },
         {
-            name: 'Descrição',
+            name: 'Descricao',
             selector: (row: { descricao: string; }) => row.descricao,
             sortable: true,
-            width: "30rem"
-        },
+            width: "17rem",
+            headCells: {
+                style: {
+                  fontSize: '20px',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  paddingLeft: '0 8px'
+                },
+              },
+        },     
         {
             cell: (row: { id: any; }) => <>
                 <button onClick={() => clickEditar(row.id)} className="btn-editar">Editar</button>
@@ -91,44 +98,22 @@ const GridCategoria: React.FC<GridProps> = ({ nome }) => {
         rangeSeparatorText: "de",
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
-    }
-
-
-
-    // async function handlePerRowsChange(newQtdPage: number, page: number) {
-    //     setLoading(true);
-    //     setData(dados);
-
-    //     const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=${newQtdPage}&delay=5`);
-
-    //     setData(response.data.data);
-    //     setLoading(false);
-        
-    // }
-
-    // useEffect(() => {
-    //     handleCategoriaChange({ target: { value: '' } })
-    // }, [] );
+    }    
 
 	return (     
             <div>
                 <DataTable
                     columns={columns}
-                    data={listaCategorias}
+                    data={listaPautas}                
                     pagination={true}
                     paginationComponentOptions={paginationOptions}
                     noDataComponent={"Nenhum registro encontrado"}
-                    // onChangeRowsPerPage={handlePerRowsChange}
-                    // onChangePage={handlePageChange}
-                    // paginationTotalRows={totalRows}
                     paginationServer={true}
                     fixedHeader={true}
-                    // progressPending={loading}
-                    //conditionalRowStyles={conditionalRowStyles}
                     customStyles={customStyles}
-                />            
+                />        
             </div>
 	);
 }
 
-export default GridCategoria;
+export default GridPautas;

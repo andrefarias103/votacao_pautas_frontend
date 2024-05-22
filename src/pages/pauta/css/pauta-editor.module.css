@@ -1,0 +1,93 @@
+.AppStyle {
+    height: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 16px;
+    gap: 26px;
+}
+.container {
+    display: flex;    
+    height: 406px;
+    padding: 28px;
+    border-bottom: 1px solid #ccc;
+    background-color: #EDF5F8;
+    flex-direction: column;
+    line-height: 25px;
+    gap: 15px;
+}
+
+.areaCampos {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.label {
+    display: flex;
+    font-family: 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+    justify-content: flex-end; 
+    width: 250px;
+}
+
+.textBox {
+    width: 100%;
+    height: 30px;
+    font-family: 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+}
+
+.textBoxDescricao {
+     height: 200px;
+     width: 100%;
+     font-family: 'sans-serif';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 16px; 
+}
+
+.areabotao {
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+    font-family:  Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    background-color: #F99500;
+    display: inline-block;
+    line-height: 32px;
+    opacity: 0.9;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    text-size-adjust: 100%;
+    width: 212px;
+    height: 35px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px #0000009F;
+
+    &:active {
+      background-color: #F99500;
+      box-shadow: 2px 2px 4px #0000009F inset;
+    }
+  }
+
+  .date {
+    width: 350;
+  }
+
+
+
+
+

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export interface IDadosCategoria { 
-        id: string,
+        id: number,
         nome: string, 
         descricao: string, 
 }
