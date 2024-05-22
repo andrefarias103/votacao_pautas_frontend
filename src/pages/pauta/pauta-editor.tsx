@@ -47,7 +47,7 @@ const PautaEditor: React.FC = () => {
      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
         atualizaPauta({id, titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim});
-        navigate(`/pautas/index`); //redireciona
+        navigate(`/pautas/index`); 
       };        
 
     return (
