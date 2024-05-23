@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import GridPautas from "../../components/grid/grid_pautas";
+import GridPautas from "../../components/Grid/grid_pautas";
 import style from "./css/pauta-index.module.css";
 
 function Pauta() {

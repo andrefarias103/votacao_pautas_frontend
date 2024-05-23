@@ -9,7 +9,7 @@ import style from "./home.module.css";
 function Home() {
   const listaCategorias = useCategorias();
   const [selectedCategoria, setSelectedCategoria] = useState();
-  const {listaPautas, loading: loadingPautas } = usePautas({ categoriaId: selectedCategoria });
+  const {listaPautas } = usePautas({ categoriaId: selectedCategoria });
 
   const handleCategoriaChange = (event: { target: { value: any } }) => {
     setSelectedCategoria(event.target.value);
@@ -35,23 +35,20 @@ function Home() {
           ))}
         </select>
       </div>
-
-      {loadingPautas ? <p></p> : (
-          <div>
-            <ul>
-              {listaPautas.map((item: IDadosPautaPorCategoria) => (
-                <Item
-                  titulo={item.categoria.nome}
-                  tituloPauta={item.titulo}
-                  aberturaSessao={ item.Sessao.dataHoraInicio   }
-                  fechamentoSessao={item.Sessao.dataHoraFim}      
-                  quantidadeVotos={item.quantidadeVotos}           
-                ></Item>                
-              ))}
-            </ul>
-        </div>
-  
-      )}    
+      <div>
+        <ul>
+          {listaPautas.map((item: IDadosPautaPorCategoria) => (
+            <Item
+              pautaId={item.id}
+              titulo={item.categoria.nome}
+              tituloPauta={item.titulo}
+              aberturaSessao={ item.Sessao.dataHoraInicio   }
+              fechamentoSessao={item.Sessao.dataHoraFim}      
+              quantidadeVotos={item.quantidadeVotos}           
+            ></Item>                
+          ))}
+        </ul>
+    </div>   
 </div>
 
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import GridCategoria from "../../components/grid/grid_categorias";
+import GridCategoria from "../../components/Grid/grid_categorias";
 import style from "./css/categoria-index.module.css";
 
 function Categoria() {

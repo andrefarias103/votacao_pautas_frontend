@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import GridUsuarios from "../../components/grid/grid_usuarios";
+import GridUsuarios from "../../components/Grid/grid_usuarios";
 import style from "./css/usuario-index.module.css";
 
 function Usuario(){

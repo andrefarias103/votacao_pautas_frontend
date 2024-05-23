@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export interface IDadosPautaPorCategoria { 
+            id: string,
             titulo: string,
             tituloPauta: string,
             aberturaSessao: string,
@@ -20,11 +21,8 @@ export interface IDadosPauta {
 
 export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) => {
     const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {        
-
-        setLoading(true);
 
         let categoria =  categoriaId;
         
@@ -35,14 +33,15 @@ export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) 
             categoria = "";
         }
          
-        fetch(`http://localhost:3010/pautas/liberadas/${categoria}`)
+        fetch(`http://localhost:3010/pauta/liberadas/${categoria}`)
              .then((response) => response.json())
-             .then((data) => setPautas(data))
-             .then(() => setLoading(false))
+             .then((data) => setPautas(data)); 
              
     }, [categoriaId]);
 
-    return {listaPautas, loading};
+
+
+    return {listaPautas};
 
 };
 

@@ -10,7 +10,7 @@ interface BotaoProps extends ButtonHTMLAttributes<HTMLElement> {
 // class Botao extends React.Component < { children: React.ReactNode }> {
 const Botao: React.FC<BotaoProps> = ({ className, children, type, onClick, ...rest }) => {
     return (
-              <button className={`${style.botao} ${className}`} > 
+              <button className={`${style.botao} ${className}`} onClick={onClick}> 
                   { children }
               </button>);
 }

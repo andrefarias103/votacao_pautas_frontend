@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import Botao from "../botao";
-import style from "./item.module.css";
+import style from "./css/item.module.css";
 
-function Item ( props : { children?: React.ReactNode,  titulo: string, tituloPauta: string, aberturaSessao: string, fechamentoSessao: string, quantidadeVotos: string} ) {
-    const { titulo, tituloPauta, aberturaSessao, fechamentoSessao, quantidadeVotos } = props;
+function Item ( props : { children?: React.ReactNode, pautaId: string, titulo: string, tituloPauta: string, aberturaSessao: string, fechamentoSessao: string, quantidadeVotos: string} ) {
+    
+    const navigate = useNavigate();
+
+    const { pautaId, titulo, tituloPauta, aberturaSessao, fechamentoSessao, quantidadeVotos } = props;
+
+    const clickVotar = (id: string) => {
+        navigate(`/votacoes/${id}`); 
+    }
+
     return (
         <div className={style.container}>
             <div className={style.area_categoria}>
@@ -10,7 +19,7 @@ function Item ( props : { children?: React.ReactNode,  titulo: string, tituloPau
                     <label className={style.label_categoria}> {titulo} </label>
                     <div className={style.label_pauta}><label> {tituloPauta} </label></div>
                 </div>
-                <Botao>Iniciada</Botao>
+                <Botao type="button" onClick={() => clickVotar(pautaId)}>Iniciada</Botao> 
             </div>
             <div className={style.sessao}>
                 <div>
