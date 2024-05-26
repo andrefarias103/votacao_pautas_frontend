@@ -14,7 +14,7 @@ const GridUsuarios: React.FC<GridProps> = ({ nome }) => {
     const listaUsuarios = useUsuariosPorNome({ nome });
 
     const clickEditar = (id: number) => {
-        navigate(`/usuarios/editar/index/${id}`); 
+        navigate(`/usuarios/editar/${id}`); 
     }   
     
     async function clickExcluir(id: number) {

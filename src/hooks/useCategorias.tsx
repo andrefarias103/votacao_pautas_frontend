@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import config from "../config";
+import { getToken } from "./useAutenticacao";
 
 export interface IDadosCategoria { 
         id: number,
@@ -7,11 +9,13 @@ export interface IDadosCategoria {
         descricao: string, 
 }
 
+const baseURL = config.appURL;
+
 export const useCategorias = () => {
     const [listaCategorias, setCategorias] = useState<IDadosCategoria[]>([]);
 
     useEffect(() => {
-         fetch("http://localhost:3010/categorias")
+         fetch("${baseURL}/categorias")
             .then((response) => response.json())
             .then((data) => setCategorias(data));
     }, []);
@@ -28,7 +32,7 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
                complemento_path = `/filtro_nome/${nome}`;
              }
 
-            fetch(`http://localhost:3010/categorias${complemento_path}`)
+            fetch(`${baseURL}/categorias${complemento_path}`)
                .then((resp) => resp.json())
                .then((data) => setCategorias(data));               
         }, [nome]);
@@ -42,9 +46,14 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
          return;
       }
 
-      fetch(`http://localhost:3010/categorias/`, {
+      const token = getToken();
+      
+      fetch(`${baseURL}/categorias/`, {
          method: 'POST',
-         headers: { 'content-type': 'application/json'},
+         headers: { 
+            Authorization: token ? `Bearer ${token}` : '',
+            'content-type': 'application/json'
+         },
          body: JSON.stringify( {nome, descricao} ),
       }
       ).then((resp) =>  {     
@@ -66,7 +75,7 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
          return;
       }
 
-      fetch(`http://localhost:3010/categorias/${id}`, {
+      fetch(`${baseURL}/categorias/${id}`, {
          method: 'PUT',
          headers: { 'content-type': 'application/json'},
          body: JSON.stringify( {nome, descricao} ),
@@ -82,7 +91,7 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
     };       
 
     export const excluirCategoria = ({ id } : { id: number | undefined }) => {    
-      fetch(`http://localhost:3010/categorias/${id}`, {
+      fetch(`${baseURL}/categorias/${id}`, {
          method: 'DELETE',
          headers: { 'content-type': 'application/json'},
       }
@@ -97,7 +106,7 @@ export const useCategoriasPorNome = ({ nome } : { nome: string | undefined}) => 
     };  
 
     export async function categoriaPorId(id: string | undefined) {
-      const resposta = fetch(`http://localhost:3010/categorias/filtro_id/${id}`)
+      const resposta = fetch(`${baseURL}/categorias/filtro_id/${id}`)
          .then((resp) => resp.json())
          .catch(err => console.log(err));
       return resposta;

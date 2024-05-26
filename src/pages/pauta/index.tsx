@@ -21,7 +21,7 @@ function Pauta() {
                         onChange={handlePautaChange} 
                         value={pautaFiltro}>    
                     </input>
-                    <Link to="/pautas/adicionar/index/2" className={style.link}>Nova Pauta</Link>
+                    <Link to="/pautas/adicionar/2" className={style.link}>Nova Pauta</Link>
                 </div>                 
                 <GridPautas nome={pautaFiltro}></GridPautas>             
             </div>

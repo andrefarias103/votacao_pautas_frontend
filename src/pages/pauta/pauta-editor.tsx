@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { IDadosCategoria, useCategorias } from "../../hooks/useCategorias";
 import { PautaPorId, atualizaPauta } from "../../hooks/usePautas";
 import { SessaoPorId } from "../../hooks/useSessoes";
@@ -47,12 +46,11 @@ const PautaEditor: React.FC = () => {
      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
         atualizaPauta({id, titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim});
-        navigate(`/pautas/index`); 
+        navigate(`/pautas/`); 
       };        
 
     return (
         <div className="wrapper">
-            <Menu />     
             <form onSubmit={handleSubmit}> 
                 <div className={style.AppStyle}>
                     <div className={style.container}>
@@ -85,7 +83,7 @@ const PautaEditor: React.FC = () => {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/pautas/index" className={style.link}>Voltar</Link>
+                        <Link to="/pautas/" className={style.link}>Voltar</Link>
                     </div>                           
                 </div>
             </form>            
@@ -110,7 +108,7 @@ const PautaEditor: React.FC = () => {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/categorias/index" className={style.link}>Voltar</Link>
+                        <Link to="/categorias/" className={style.link}>Voltar</Link>
                     </div>     
                 </div>
             </form> */}

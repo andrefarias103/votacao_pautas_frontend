@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import config from "../config";
 
 export interface IDadosPautaPorCategoria { 
             id: string,
@@ -19,6 +20,8 @@ export interface IDadosPauta {
   descricao: string,
 }
 
+const baseURL = config.appURL;
+
 export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) => {
     const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
 
@@ -33,7 +36,7 @@ export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) 
             categoria = "";
         }
          
-        fetch(`http://localhost:3010/pauta/liberadas/${categoria}`)
+        fetch(`${baseURL}/pauta/liberadas/${categoria}`)
              .then((response) => response.json())
              .then((data) => setPautas(data)); 
              
@@ -45,7 +48,7 @@ export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) 
 
 };
 
-export const createPauta = (idUserAdm: string | undefined,
+export const createPauta = (
                            { titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim  } : 
                            { titulo: string | undefined, 
                              descricao: string | undefined,
@@ -57,7 +60,7 @@ export const createPauta = (idUserAdm: string | undefined,
 //      return;
 //   }
 
-  fetch(`http://localhost:3010/pauta/${idUserAdm}`, {
+  fetch(`${baseURL}/pauta/`, {
      method: 'POST',
      headers: { 'content-type': 'application/json'},
      body: JSON.stringify( {titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim} ),
@@ -83,7 +86,7 @@ export const usePautasPorNome = ({ nome } : { nome: string | undefined}) => {
            complemento_path = `/filtro_nome/${nome}`;
          }
  
-           fetch(`http://localhost:3010/pauta${complemento_path}`)
+           fetch(`${baseURL}/pauta${complemento_path}`)
                .then((response) => response.json())
                .then((data) => setPautas(data));               
     }, [nome]);
@@ -99,7 +102,7 @@ export const usePautasPorNome = ({ nome } : { nome: string | undefined}) => {
                                  dataHoraInicio: string | undefined,
                                  dataHoraFim: string | undefined,}) => {    
 
-   fetch(`http://localhost:3010/pauta/${id}`, {
+   fetch(`${baseURL}/pauta/${id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json'},
       body: JSON.stringify( {titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim} ),
@@ -116,7 +119,7 @@ export const usePautasPorNome = ({ nome } : { nome: string | undefined}) => {
 
 
  export const excluirPauta = async ({ id } : { id: number | undefined }) => {    
-    fetch(`http://localhost:3010/pauta/${id}`, {
+    fetch(`${baseURL}/pauta/${id}`, {
        method: 'DELETE',
        headers: { 'content-type': 'application/json'},
     }
@@ -131,7 +134,7 @@ export const usePautasPorNome = ({ nome } : { nome: string | undefined}) => {
  };  
 
  export async function PautaPorId(id: string | undefined) {
-   const resposta = fetch(`http://localhost:3010/pauta/filtro_id/${id}`)
+   const resposta = fetch(`${baseURL}/pauta/filtro_id/${id}`)
       .then((resp) => resp.json())
       .catch(err => console.log(err));
    return resposta;

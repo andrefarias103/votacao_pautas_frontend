@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { atualizaCategoria, categoriaPorId } from "../../hooks/useCategorias";
 import style from "./css/categoria-editor.module.css";
 
@@ -36,12 +35,11 @@ const CategoriaEditor: React.FC = () => {
      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
         atualizaCategoria({id, nome, descricao});
-        navigate(`/categorias/index`); 
+        navigate(`/categorias/`); 
       };        
 
     return (
         <div className="wrapper">
-            <Menu />     
             <form onSubmit={handleSubmit}> 
                 <div className={style.AppStyle}>
                     <div className={style.container}>
@@ -63,7 +61,7 @@ const CategoriaEditor: React.FC = () => {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/categorias/index" className={style.link}>Voltar</Link>
+                        <Link to="/categorias" className={style.link}>Voltar</Link>
                     </div>     
                 </div>
             </form>

@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { IDadosPerfilUsuarios, atualizaUsuario, usePerfillUsuario, usuarioPorId } from "../../hooks/useUsuarios";
 import style from "./css/usuario-editor.module.css";
 
@@ -46,7 +45,7 @@ const UsuarioEditor: React.FC = () => {
     const handleCpfChange = (event: React.ChangeEvent<HTMLInputElement> ) => { setCpf(event.target.value); }    
     const handlePerfilChange = (event: { target: { value: any } }) => { setTipo(event.target.value); };      
 
-    const listaPerfil: IDadosPerfilUsuarios[] = usePerfillUsuario();  
+    const listaPerfil = usePerfillUsuario();  
     
      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
@@ -54,13 +53,12 @@ const UsuarioEditor: React.FC = () => {
             console.log('nova senha: ', novaSenha);
             if(senha === novaSenha){
                 atualizaUsuario({ id, login, nome, senha, endereco, email, cpf, tipo});
-                navigate(`/usuarios/index`); 
+                navigate(`/usuarios/`); 
             }
       }; 
 
     return (
         <div className="wrapper">
-            <Menu />     
             <form onSubmit={handleSubmit}> 
                 <div className={style.AppStyle}>
                     <div className={style.container}>
@@ -99,8 +97,8 @@ const UsuarioEditor: React.FC = () => {
                             value={tipo} 
                             onChange={handlePerfilChange}>
                             {listaPerfil.map(( itemPerfil) => (
-                                <option value={itemPerfil.key} key={itemPerfil.key}>
-                                    {itemPerfil.nome}        
+                                <option value={itemPerfil} key={itemPerfil}>
+                                    { IDadosPerfilUsuarios[itemPerfil]  }        
                                 </option>
                             ))}
                         </select>                            
@@ -108,7 +106,7 @@ const UsuarioEditor: React.FC = () => {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/usuarios/index" className={style.link}>Voltar</Link>
+                        <Link to="/usuarios/" className={style.link}>Voltar</Link>
                     </div>                                               
                 </div>
             </form>            

@@ -9,7 +9,8 @@ function Item ( props : { children?: React.ReactNode, pautaId: string, titulo: s
     const { pautaId, titulo, tituloPauta, aberturaSessao, fechamentoSessao, quantidadeVotos } = props;
 
     const clickVotar = (id: string) => {
-        navigate(`/votacoes/${id}`); 
+        navigate(`/cpf/${id}`); 
+        //navigate(`/votacoes/${id}`); 
     }
 
     return (

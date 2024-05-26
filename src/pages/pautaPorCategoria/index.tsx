@@ -1,12 +1,12 @@
 import { useState } from "react";
-import stylePesquisa from "../components/filtroPesquisa/filtro-pesquisa.module.scss";
-import Item from "../components/item";
-import { IDadosCategoria, useCategorias } from "../hooks/useCategorias";
-import { IDadosPautaPorCategoria, usePautas } from "../hooks/usePautas";
-import style from "./home.module.css";
+import stylePesquisa from "../../components/filtroPesquisa/filtro-pesquisa.module.scss";
+import Item from "../../components/item";
+import { IDadosCategoria, useCategorias } from "../../hooks/useCategorias";
+import { IDadosPautaPorCategoria, usePautas } from "../../hooks/usePautas";
+import style from "./css/pautaPorCategoria.module.css";
 
 
-function Home() {
+function PautaPorCategoria() {
   const listaCategorias = useCategorias();
   const [selectedCategoria, setSelectedCategoria] = useState();
   const {listaPautas } = usePautas({ categoriaId: selectedCategoria });
@@ -54,4 +54,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default PautaPorCategoria;

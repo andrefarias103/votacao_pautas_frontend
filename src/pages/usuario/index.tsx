@@ -21,7 +21,7 @@ function Usuario(){
                         onChange={handleUsuarioChange} 
                         value={usuarioFiltro}>    
                     </input>
-                    <Link to="/usuarios/adicionar/index/2" className={style.link}>Novo Usuário</Link>
+                    <Link to="/usuarios/adicionar/2" className={style.link}>Novo Usuário</Link>
                 </div>                 
                 <GridUsuarios nome={usuarioFiltro}></GridUsuarios>             
             </div>

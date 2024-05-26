@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import config from "../config";
 
 export interface IDadosUsuarios {  
         id: string,       
@@ -8,12 +9,16 @@ export interface IDadosUsuarios {
         email: string,
         tipo: string,
 }
-export interface IDadosPerfilUsuarios {
-   key: string;
-   nome: string;
+export enum IDadosPerfilUsuarios {
+   PERFIL_ADMIN = 'Administrador',
+   PERFIL_COMUM = 'Comum'
 }
 
-export const createUsuario = (idUserAdm: string | undefined, { login, nome, senha, endereco, email, cpf, tipo } : { 
+type listaChaves = 'PERFIL_ADMIN' | 'PERFIL_COMUM';
+
+const baseURL = config.appURL;
+
+export const createUsuario = ({ login, nome, senha, endereco, email, cpf, tipo } : { 
                                                                               login: string | undefined, 
                                                                               nome: string | undefined, 
                                                                               senha: string | undefined,
@@ -23,7 +28,8 @@ export const createUsuario = (idUserAdm: string | undefined, { login, nome, senh
                                                                               tipo: string | undefined 
                                                                            }) => {    
                                                                      
-fetch(`http://localhost:3010/usuario/${idUserAdm}`, {
+
+fetch(`${baseURL}/usuario/`, {
    method: 'POST',
    headers: { 'content-type': 'application/json'},
    body: JSON.stringify( {login, nome, senha, endereco, email, cpf, tipo} ),}).then( (resp) =>  { 
@@ -40,10 +46,10 @@ return { login, nome, endereco, email, cpf, tipo };
 };    
 
 export const usePerfillUsuario = () => {
-   const [listaPerfil, setListaPerfil] = useState<IDadosPerfilUsuarios[]>([]);
+   const [listaPerfil, setListaPerfil] = useState<listaChaves[]>([]);
 
    useEffect(() => {
-        fetch("http://localhost:3010/usuario/filtro_perfil")
+        fetch("${baseURL}/usuario/filtro_perfil")
            .then((response) => response.json())
            .then((data) => setListaPerfil(data));
    }, []);
@@ -60,7 +66,7 @@ export const useUsuariosPorNome = ({ nome } : { nome: string | undefined}) => {
           complemento_path = `/filtro_nome/${nome}`;
         }
 
-          fetch(`http://localhost:3010/usuario${complemento_path}`)
+          fetch(`${baseURL}/usuario${complemento_path}`)
               .then((response) => response.json())
               .then((data) => setUsuarios(data));               
    }, [nome]);
@@ -69,7 +75,7 @@ export const useUsuariosPorNome = ({ nome } : { nome: string | undefined}) => {
 };
 
 export async function usuarioPorId(id: string | undefined) {
-   const resposta = fetch(`http://localhost:3010/usuario/filtro_id/${id}`)
+   const resposta = fetch(`${baseURL}/usuario/filtro_id/${id}`)
       .then((resp) => resp.json())
       .catch(err => console.log(err));
    return resposta;
@@ -81,7 +87,7 @@ export const atualizaUsuario = async ({ id, login, nome, senha, endereco, email,
                                                                                           cpf: string | undefined, tipo: string | undefined,                                                                                  
                                                                                  }) => {    
 
-   fetch(`http://localhost:3010/usuario/${id}`, {
+   fetch(`${baseURL}/usuario/${id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json'},
       body: JSON.stringify( { login, nome, senha, endereco, email, cpf, tipo} ),
@@ -101,7 +107,7 @@ export const atualizaUsuario = async ({ id, login, nome, senha, endereco, email,
  };       
 
  export const excluirUsuario = async ({ id } : { id: number | undefined }) => {    
-   fetch(`http://localhost:3010/usuario/${id}`, {
+   fetch(`${baseURL}/usuario/${id}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json'},
    }

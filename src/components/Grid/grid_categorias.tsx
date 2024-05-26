@@ -16,7 +16,7 @@ const GridCategoria: React.FC<GridProps> = ({ nome }) => {
     //const [loading, setLoading] = useState(false);
 
     const clickEditar = (id: number) => {
-      navigate(`/categorias/editar/index/${id}`); 
+      navigate(`/categorias/editar/${id}`); 
   }
 
   async function clickExcluir(id: number) {

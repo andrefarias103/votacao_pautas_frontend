@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { PautaPorId } from "../../hooks/usePautas";
 import { SessaoPorId } from "../../hooks/useSessoes";
 import { createVotacao } from "../../hooks/useVotos";
@@ -56,7 +55,6 @@ const Votacao: React.FC = () => {
 
     return (
             <div className="wrapper">
-                <Menu />     
                 <form onSubmit={handleSubmit}> 
                     <div className={style.AppStyle}>
                         <div className={style.container}>

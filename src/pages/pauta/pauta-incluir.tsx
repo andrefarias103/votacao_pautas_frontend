@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { IDadosCategoria, useCategorias } from "../../hooks/useCategorias";
 import { createPauta } from "../../hooks/usePautas";
 import style from "./css/pauta-editor.module.css";
@@ -10,8 +9,6 @@ import getCurrentDateTime from "./utils/dataHora.utils";
 function PautaIncluir()  {
 
     const navigate = useNavigate();
-
-    const {idUserAdmin} = useParams();    
 
     const [titulo, setTitulo] = useState<string | undefined>();
     const [descricao, setDescricao] = useState<string |undefined>();
@@ -28,13 +25,12 @@ function PautaIncluir()  {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
         event.preventDefault();
-        createPauta(idUserAdmin, {titulo, descricao, categoriaId: categoriaId, dataHoraInicio, dataHoraFim});
-        navigate(`/pautas/index`); 
+        createPauta({titulo, descricao, categoriaId: categoriaId, dataHoraInicio, dataHoraFim});
+        navigate(`/pautas/`); 
       };      
 
     return (
         <div className="wrapper">
-            <Menu />     
             <form onSubmit={handleSubmit}> 
                 <div className={style.AppStyle}>
                     <div className={style.container}>
@@ -67,7 +63,7 @@ function PautaIncluir()  {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/pautas/index" className={style.link}>Voltar</Link>
+                        <Link to="/pautas/" className={style.link}>Voltar</Link>
                     </div>                           
                 </div>
             </form>

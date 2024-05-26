@@ -14,7 +14,7 @@ const GridPautas: React.FC<GridProps> = ({ nome }) => {
     const listaPautas = usePautasPorNome({ nome });
 
     const clickEditar = (id: number) => {
-        navigate(`/pautas/editar/index/${id}`); 
+        navigate(`/pautas/editar/${id}`); 
     }   
     
     async function clickExcluir(id: number) {

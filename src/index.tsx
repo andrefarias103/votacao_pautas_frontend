@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './global.css';
 
 import { BrowserRouter } from 'react-router-dom';
+import { AutenticacaoProvedor } from './contexto/autenticacao/autenticacaoProvedor';
 import { AppRoutes } from './routes';
 
 const root = ReactDOM.createRoot(
@@ -11,11 +12,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <>
-  <BrowserRouter>
-    <AppRoutes />        
-  </BrowserRouter>
-  <ToastContainer />  
+      <AutenticacaoProvedor>
+        <BrowserRouter>      
+          <AppRoutes />        
+        </BrowserRouter>
+        <ToastContainer />  
+      </AutenticacaoProvedor>
   </>
-
 );
 

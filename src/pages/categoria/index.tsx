@@ -21,7 +21,7 @@ function Categoria() {
                         onChange={handleCategoriaChange} 
                         value={categoriaFiltro}>                    
                     </input>
-                    <Link to="/categorias/adicionar/index" className={style.link}>Nova Categoria</Link>
+                    <Link to="/categorias/adicionar/" className={style.link}>Nova Categoria</Link>
                 </div>      
                 <GridCategoria nome={categoriaFiltro} ></GridCategoria>
             </div>

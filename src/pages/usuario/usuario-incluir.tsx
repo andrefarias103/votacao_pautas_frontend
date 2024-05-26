@@ -1,16 +1,13 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Botao from "../../components/botao";
-import Menu from "../../components/menu";
 import { IDadosPerfilUsuarios, createUsuario, usePerfillUsuario } from "../../hooks/useUsuarios";
 import style from "./css/usuario-editor.module.css";
 
 const UsuarioIncluir: React.FC = () => {    
 
     const navigate = useNavigate();
-
-    const {idUserAdmin} = useParams();    
 
     const [login, setLogin] = useState<string | undefined>();
     const [senha, setSenha] = useState<string | undefined>();
@@ -21,7 +18,8 @@ const UsuarioIncluir: React.FC = () => {
     const [cpf, setCpf] = useState<string |undefined>();
     const [tipo, setTipo] = useState<string |undefined>();
 
-    const listaPerfil: IDadosPerfilUsuarios[] = usePerfillUsuario();  
+
+    const listaPerfil = usePerfillUsuario();  
     const selectRef = useRef<HTMLSelectElement>(null);
     
     const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement> ) => { setLogin(event.target.value);}
@@ -35,7 +33,7 @@ const UsuarioIncluir: React.FC = () => {
 
     useEffect(() => {            
         if (listaPerfil.length > 0) {
-            const defaultValue = listaPerfil[0].key; 
+            const defaultValue = listaPerfil[0]; 
             setTipo(defaultValue);
             if (selectRef.current) {
             const event = new Event('change', { bubbles: true });
@@ -46,20 +44,18 @@ const UsuarioIncluir: React.FC = () => {
       }, [listaPerfil]);    
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {        
-        event.preventDefault();    
-        if (idUserAdmin) {    }        
-            if(senha !== novaSenha){
-                toast.error('"Senha" e "Nova Senha" são diferentes!');
-            }     
-            else {  
-                createUsuario(idUserAdmin, { login, nome, senha, endereco, email, cpf, tipo});  
-                navigate(`/usuarios/index`);                              
-            }                                      
-      }; 
+        event.preventDefault();          
+        if(senha !== novaSenha){
+            toast.error('"Senha" e "Nova Senha" são diferentes!');
+        }     
+        else {  
+            createUsuario({ login, nome, senha, endereco, email, cpf, tipo});  
+            navigate(`/usuarios/`);                              
+        }                                      
+    }; 
 
     return (
         <div className="wrapper">
-            <Menu />     
             <form onSubmit={handleSubmit}> 
                 <div className={style.AppStyle}>
                     <div className={style.container}>
@@ -98,8 +94,8 @@ const UsuarioIncluir: React.FC = () => {
                             value={tipo} 
                             onChange={handlePerfilChange}>
                             {listaPerfil.map(( itemPerfil) => (
-                                <option value={itemPerfil.key} key={itemPerfil.key}>
-                                    {itemPerfil.nome}        
+                                <option value={itemPerfil} key={itemPerfil}>
+                                    { IDadosPerfilUsuarios[itemPerfil]  }        
                                 </option>
                             ))}
                         </select>                            
@@ -107,7 +103,7 @@ const UsuarioIncluir: React.FC = () => {
                     </div>
                     <div className={style.areabotao}>
                         <Botao type="submit">Salvar</Botao>
-                        <Link to="/usuarios/index" className={style.link}>Voltar</Link>
+                        <Link to="/usuarios/" className={style.link}>Voltar</Link>
                     </div>    
                                            
                 </div>
