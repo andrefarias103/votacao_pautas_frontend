@@ -1,0 +1,106 @@
+
+.container {
+    display: flex;
+    height: 240px;
+    width: 100%;
+    padding-top: 1%;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-color: #5CB1FF;
+    border-radius: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-around;
+    margin-bottom: 1%;
+}
+
+.area_titulo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 20px;
+    padding-left: 1%;
+    padding-right: 1%;
+    line-height: 25px;
+}
+
+.label_categoria {
+    color: #636262;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.label_pauta {
+    color: #9c3c01;
+    font-weight: bold;
+}
+
+.votacao {    
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, #FFFFFF 0%, #93c6e9 100%);
+    border: 1px solid #000000;
+    width: 100%;
+    height: 120px;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 1%;
+    margin-right: 1%;       
+}
+
+
+.label_titulo_votacao {
+    color: #2c3fcd;
+    font-size: 16px;
+    padding: 10px
+}
+
+.label_totalvotos {
+    color: #9c3c01;
+    font-weight: bold;   
+    font-size: 16px;  
+    padding: 10px  
+}
+
+.votacao_sim {
+    color: #2c3fcd;    
+    font-size: 16px;  
+    padding: 10px
+}
+
+.label_totalvotos_sim {
+    color: #3acf5d;    
+    font-weight: bold; 
+    font-size: 16px;     
+    padding: 84px;    
+}
+
+.votacao_nao {
+    color: #2c3fcd;          
+    font-size: 16px;   
+    padding: 10px
+}    
+
+.label_totalvotos_nao {
+    color: #d03e3e;
+    font-weight: bold; 
+    font-size: 16px; 
+    padding: 80px;            
+}
+
+.label_titulo_resultado {
+    color: #033380;
+    font-size: 16px;
+    font-weight: bold; 
+    padding: 10px
+}
+
+.label_resultado {
+    color: #ff0d00;
+    font-weight: bold;  
+    font-size: 24px;
+    padding: 35px;      
+}

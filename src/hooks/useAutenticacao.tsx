@@ -5,6 +5,7 @@ import config from "../config";
       login: string,
       nome: string,
       token_acesso: string;
+      CPF: string;
  }
  
  const baseURL = config.appURL;
@@ -25,7 +26,7 @@ import config from "../config";
  
    const data = await response.json();
    if (data.token_acesso) {
-     localStorage.setItem('token', data.token_acesso);
+     sessionStorage.setItem('token', data.token_acesso);
    }
    return data;
  };
@@ -51,20 +52,20 @@ import config from "../config";
   
 
  export const getToken = (): string | null => {
-   return localStorage.getItem('token');
+   return sessionStorage.getItem('token');
  };
 
 
  export const validateToken = async (token: string): Promise<LoginResponse>  => {
-    const response = await fetch(`${baseURL}/autenticacao/validacao/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ token }),
-    });  
-    const data = await response.json();
-    return data;
- }
+  const response = await fetch(`${baseURL}/autenticacao/profile/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  });  
+  const data = await response.json();
+  return data;
+}
 
 

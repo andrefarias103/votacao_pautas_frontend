@@ -1,5 +1,5 @@
-import Categoria from "./pages/categoria";
-// import Home from "./pages/Home";
+import Categoria from "./paginas/categoria";
+// import Home from "./paginas/Home";
 export function App() {
   return (
     <div>

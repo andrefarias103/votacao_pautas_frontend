@@ -5,7 +5,7 @@ import './global.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import { AutenticacaoProvedor } from './contexto/autenticacao/autenticacaoProvedor';
-import { AppRoutes } from './routes';
+import { AppRoutes } from './rotas';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

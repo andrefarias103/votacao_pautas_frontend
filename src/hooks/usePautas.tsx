@@ -1,51 +1,58 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import config from "../config";
-
-export interface IDadosPautaPorCategoria { 
-            id: string,
-            titulo: string,
-            tituloPauta: string,
-            aberturaSessao: string,
-            fechamentoSessao: string,
-            categoria: { nome: string},
-            quantidadeVotos: string,
-            Sessao: {dataHoraInicio: string, dataHoraFim: string},
-            votacao: {opcaoVotada: string, dataHoraVoto: string},    
-}
-
-export interface IDadosPauta { 
-  id: string,
-  titulo: string,
-  descricao: string,
-}
+import { IDadosPautaPorCategoria } from "../interfaces/TPautasPorCategoria";
+import { IDadosPauta } from "../interfaces/TPautasRequest";
 
 const baseURL = config.appURL;
 
-export const usePautas = ({ categoriaId } : { categoriaId: string | undefined}) => {
+export const usePautas = ({ categoriaId, status } : { categoriaId: string | undefined, status: string | undefined},) => {
+
     const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
 
     useEffect(() => {        
 
-        let categoria =  categoriaId;
+        let categoria =  "";
+
+        console.log("🚀 ~ useEffect ~ categoriaId:", categoriaId)
         
-        if ((categoria !== undefined) && (categoria !== null) && (categoriaId !== "")) {
-              categoria = `${categoriaId}`;
-        } 
-        else {
-            categoria = "";
+        if (categoriaId) {            
+            categoria = categoriaId + "/";
         }
          
-        fetch(`${baseURL}/pauta/liberadas/${categoria}`)
+        console.log(`${baseURL}/pauta/status/${categoria}${status}`);
+        fetch(`${baseURL}/pauta/status/${categoria}${status}`)
              .then((response) => response.json())
              .then((data) => setPautas(data)); 
              
-    }, [categoriaId]);
+    }, [categoriaId, status]);
 
-
+    console.log(listaPautas);
 
     return {listaPautas};
+};
 
+export const usePautasConcluidas = ({ categoriaId, status } : { categoriaId: string | undefined, status: string | undefined},) => {
+
+   const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
+
+   useEffect(() => {        
+
+       let categoria =  "";
+       
+       if (categoriaId) {            
+           categoria = categoriaId + "/"
+       }
+        
+       console.log(`${baseURL}/pauta/status/${categoria}${status}`);
+       
+       fetch(`${baseURL}/pauta/status/${categoria}${status}`)
+            .then((response) => response.json())
+            .then((data) => setPautas(data)); 
+            
+   }, [categoriaId, status]);
+
+   return {listaPautas};
 };
 
 export const createPauta = (

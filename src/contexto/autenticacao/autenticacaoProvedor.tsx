@@ -9,16 +9,18 @@ export const AutenticacaoProvedor = ( {children}: { children: JSX.Element[]} ) =
 
     useEffect( () => {
         const validaToken = async () => {
-            const storageData= localStorage.getItem('authToken');
+            const storageData=sessionStorage.getItem('authToken');
             if (storageData) {
                 const data = await validateToken(storageData);      
                 if (data.id) {
                     setUsuario(data);
                 }
-            }       
+            }    
         }
         validaToken();
+
     },[]) ;
+
 
     const login = async (login: string, senha: string) => {
         const data = await loginAuthenticate(login, senha);
@@ -36,7 +38,7 @@ export const AutenticacaoProvedor = ( {children}: { children: JSX.Element[]} ) =
     }
 
     const setToken = (token: string) => { 
-        localStorage.setItem('authToken', token);
+        sessionStorage.setItem('authToken', token);
     }
 
     return (

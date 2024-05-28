@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import config from "../config";
+import { IDadosCategoria } from "../interfaces/TCategorias";
 import { getToken } from "./useAutenticacao";
-
-export interface IDadosCategoria { 
-        id: number,
-        nome: string, 
-        descricao: string, 
-}
 
 const baseURL = config.appURL;
 
@@ -15,7 +10,7 @@ export const useCategorias = () => {
     const [listaCategorias, setCategorias] = useState<IDadosCategoria[]>([]);
 
     useEffect(() => {
-         fetch("${baseURL}/categorias")
+         fetch(`${baseURL}/categorias`)
             .then((response) => response.json())
             .then((data) => setCategorias(data));
     }, []);

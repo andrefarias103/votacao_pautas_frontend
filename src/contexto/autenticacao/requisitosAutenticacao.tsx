@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Login from "../../pages/login";
+import Login from "../../paginas/login";
 import { AutenticacaoContexto } from "./autenticacaoContexto";
 
 export const RequisitosAutenticacao = ({ children }: {children: JSX.Element}) => {
