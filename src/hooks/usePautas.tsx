@@ -12,16 +12,15 @@ export const usePautas = ({ categoriaId, status } : { categoriaId: string | unde
 
     useEffect(() => {        
 
-        let categoria =  "";
-
-        console.log("🚀 ~ useEffect ~ categoriaId:", categoriaId)
-        
+        let categoria =  "";        
         if (categoriaId) {            
             categoria = categoriaId + "/";
         }
-         
-        console.log(`${baseURL}/pauta/status/${categoria}${status}`);
-        fetch(`${baseURL}/pauta/status/${categoria}${status}`)
+        
+        const PATH_URL = `${baseURL}/pauta/status/${categoria}${status}`;
+        console.log('path_url: ', PATH_URL);
+
+        fetch(PATH_URL)
              .then((response) => response.json())
              .then((data) => setPautas(data)); 
              
@@ -32,28 +31,28 @@ export const usePautas = ({ categoriaId, status } : { categoriaId: string | unde
     return {listaPautas};
 };
 
-export const usePautasConcluidas = ({ categoriaId, status } : { categoriaId: string | undefined, status: string | undefined},) => {
+// export const usePautasConcluidas = ({ categoriaId, status } : { categoriaId: string | undefined, status: string | undefined},) => {
 
-   const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
+//    const [listaPautas, setPautas] = useState<IDadosPautaPorCategoria[]>([]);
 
-   useEffect(() => {        
+//    useEffect(() => {        
 
-       let categoria =  "";
+//        let categoria =  "";
        
-       if (categoriaId) {            
-           categoria = categoriaId + "/"
-       }
+//        if (categoriaId) {            
+//            categoria = categoriaId + "/"
+//        }
         
-       console.log(`${baseURL}/pauta/status/${categoria}${status}`);
+//        console.log(`${baseURL}/pauta/status/${categoria}${status}`);
        
-       fetch(`${baseURL}/pauta/status/${categoria}${status}`)
-            .then((response) => response.json())
-            .then((data) => setPautas(data)); 
+//        fetch(`${baseURL}/pauta/status/${categoria}${status}`)
+//             .then((response) => response.json())
+//             .then((data) => setPautas(data)); 
             
-   }, [categoriaId, status]);
+//    }, [categoriaId, status]);
 
-   return {listaPautas};
-};
+//    return {listaPautas};
+// };
 
 export const createPauta = (
                            { titulo, descricao, categoriaId, dataHoraInicio, dataHoraFim  } : 

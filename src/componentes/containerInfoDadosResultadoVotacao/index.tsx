@@ -12,6 +12,8 @@ function ContainerInfoDadosResultadoVotacao ( props : { children?: React.ReactNo
 
     const { titulo, tituloPauta, quantidadeVotosSim, quantidadeVotosNao, quantidadeVotos, resultado } = props;
 
+    console.log('PROPS: ', props);
+
     return (
         <div className={style.container}>
             <div className={style.area_titulo}>

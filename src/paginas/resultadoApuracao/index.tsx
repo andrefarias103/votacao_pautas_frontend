@@ -2,7 +2,7 @@ import { useState } from "react";
 import stylePesquisa from "../../componentes/blocoParaPesquisa/css/filtro-pesquisa.module.css";
 import ContainerInfoDadosResultadoVotacao from "../../componentes/containerInfoDadosResultadoVotacao";
 import { useCategorias } from "../../hooks/useCategorias";
-import { usePautasConcluidas } from "../../hooks/usePautas";
+import { usePautas } from "../../hooks/usePautas";
 import { IDadosCategoria } from "../../interfaces/TCategorias";
 import { IDadosPautaPorCategoria } from "../../interfaces/TPautasPorCategoria";
 import style from "./css/resultado.apuracao.module.css";
@@ -11,7 +11,7 @@ function ResultadoApuracao() {
 
     const listaCategorias = useCategorias();
     const [selectedCategoria, setSelectedCategoria] = useState();
-    const { listaPautas }= usePautasConcluidas({ categoriaId: undefined, status: 'STATUS_CONCLUIDA'});
+    const { listaPautas }= usePautas({ categoriaId: selectedCategoria, status: 'STATUS_CONCLUIDA'});
 
     const handleCategoriaChange = (event: { target: { value: any } }) => {
         setSelectedCategoria(event.target.value);

@@ -34,7 +34,7 @@ export const SidebarData = [
     },
     {
         title: "Detalhes",
-        path: "/",
+        path: "/resultado/",
         icon: <FaIcons.FaInfoCircle />,
  
         iconClosed: <RiIcons.RiArrowDownSFill />,
